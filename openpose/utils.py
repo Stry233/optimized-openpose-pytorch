@@ -7,9 +7,10 @@ GitHub: https://github.com/prasunroy/openpose-pytorch
 
 """
 
-
 import cv2
+from math import ceil
 
+import torch
 
 def draw_keypoints(image, keypoints, radius=1, alpha=1.0):
     overlay = image.copy()
@@ -38,12 +39,23 @@ def draw_body_connections(image, keypoints, thickness=1, alpha=1.0):
     return cv2.addWeighted(overlay, alpha, image, 1.0 - alpha, 0)
 
 
-def draw_face_connections():
-    raise NotImplementedError
+def draw_face_connections(image, keypoints, thickness=1, alpha=1.0):
+    overlay = image.copy()
+    face_conn = [(0, 1), (1, 2), (2, 3), (3, 4)]  # replace with actual face connections
+    for kp in keypoints:
+        for i, j in face_conn:
+            overlay = _draw_connection(overlay, kp[i], kp[j], (255, 0, 0), thickness)
+    return cv2.addWeighted(overlay, alpha, image, 1.0 - alpha, 0)
 
 
-def draw_hand_connections():
-    raise NotImplementedError
+def draw_hand_connections(image, keypoints, thickness=1, alpha=1.0):
+    overlay = image.copy()
+    hand_conn = [(0, 1), (1, 2), (2, 3), (3, 4)]  # replace with actual hand connections
+    for kp in keypoints:
+        for i, j in hand_conn:
+            overlay = _draw_connection(overlay, kp[i], kp[j], (0, 0, 255), thickness)
+    return cv2.addWeighted(overlay, alpha, image, 1.0 - alpha, 0)
+
 
 
 def _draw_connection(image, point1, point2, color, thickness=1):
@@ -52,3 +64,18 @@ def _draw_connection(image, point1, point2, color, thickness=1):
     if v1 and v2:
         cv2.line(image, (int(x1), int(y1)), (int(x2), int(y2)), color, thickness, cv2.LINE_AA)
     return image
+
+def do_profile(follow=[]):
+    def inner(func):
+        def profiled_func(*args, **kwargs):
+            try:
+                profiler = LineProfiler()
+                profiler.add_function(func)
+                for f in follow:
+                    profiler.add_function(f)
+                profiler.enable_by_count()
+                return func(*args, **kwargs)
+            finally:
+                profiler.print_stats()
+        return profiled_func
+    return inner
