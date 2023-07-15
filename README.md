@@ -2,8 +2,8 @@
   <img src='https://github.com/prasunroy/openpose-pytorch/raw/master/assets/image_1.jpg' />
 </p>
 
-# OpenPose PyTorch
-**OpenPose api wrapper in PyTorch.**
+# [Optimized] OpenPose PyTorch
+**OpenPose api wrapper in PyTorch, but faster :-)**
 <img align='right' height='100' src='https://github.com/prasunroy/openpose-pytorch/blob/master/assets/logo.png' />
 
 ![badge](https://github.com/prasunroy/openpose-pytorch/blob/master/assets/badge_1.svg)
