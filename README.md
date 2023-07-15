@@ -14,11 +14,11 @@
 * Install [PyTorch](https://pytorch.org/get-started/locally/)
 #### Option 1: Install using pip
 ```
-pip install git+https://github.com/prasunroy/openpose-pytorch.git
+pip install git+https://github.com/Stry233/optimized-openpose-pytorch
 ```
 #### Option 2: Install from source
 ```
-git clone https://github.com/prasunroy/openpose-pytorch.git
+git clone https://github.com/Stry233/optimized-openpose-pytorch
 cd openpose-pytorch
 python setup.py install
 ```
