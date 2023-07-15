@@ -12,19 +12,20 @@ from setuptools import setup, find_packages
 
 
 setup(name='openpose-pytorch',
-      version='0.1.0',
-      description='PyTorch implementation of OpenPose',
+      version='0.0.1',
+      description='Optimized PyTorch implementation of OpenPose',
       long_description=open('README.md').read(),
       long_description_content_type='text/markdown',
-      author='Prasun Roy',
-      author_email='prasunroy.pr@gmail.com',
-      url='https://github.com/prasunroy/openpose-pytorch',
+      author='Yuetian Chen',
+      author_email='cheny63@rpi.edu',
+      url='https://stry233.github.io/',
       license='MIT',
       install_requires=[
               'numpy',
               'opencv-contrib-python',
               'scipy',
-              'tqdm'
+              'tqdm',
+              'cupy-cuda11x'
       ],
       classifiers=[
               'Development Status :: 4 - Beta',
