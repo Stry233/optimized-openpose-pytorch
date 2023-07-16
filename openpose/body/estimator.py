@@ -114,8 +114,9 @@ def _get_keypoints(candidates, subsets):
     selected_candidates[:, 2] = 1  # Set the third entry of each row to 1
 
     # Create a mask for the keypoints tensor with the same shape
-    keypoints_mask = torch.zeros_like(keypoints, dtype=torch.bool).to(keypoints.device)
+    keypoints_mask = torch.zeros_like(keypoints, dtype=torch.bool)
 
+    if len(valid_mask) == 0: return keypoints
     # Set the corresponding indices in the keypoints mask to True
     keypoints_mask[0, torch.where(valid_mask[0])[0], :] = True
 
@@ -141,7 +142,7 @@ class BodyPoseEstimator(object):
 
         # self.transform = T.GaussianBlur(kernel_size=3, sigma=3)
 
-        self._model = self._model.half().to(self.device)
+        self._model = self._model.to(self.device)
 
         if pretrained:
             state_dict = _load_state_dict_from_url(model_url, model_dir)
@@ -171,7 +172,7 @@ class BodyPoseEstimator(object):
                 np.ascontiguousarray(
                     np.expand_dims(np.transpose(image_padded, (2, 0, 1)), 0).astype(np.float32) / 255.0 - 0.5
                 )
-            ).float().half()
+            ).float()
 
             if torch.cuda.is_available():
                 image_tensor = image_tensor.cuda()
