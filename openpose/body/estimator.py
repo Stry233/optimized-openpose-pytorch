@@ -30,7 +30,6 @@ import torch.nn.functional as F
 
 model_url = 'https://www.dropbox.com/s/mun9eh2509pw32n/openpose_body_coco_pose_iter_440000.pth?dl=1'
 model_dir = os.path.join(os.path.expanduser('~'), '.cache/torch/checkpoints/')
-from line_profiler import LineProfiler
 
 
 def process_output(tensor, pads, image_padded_shape, image_shape, stride):
