@@ -2,8 +2,8 @@
   <img src='https://github.com/prasunroy/openpose-pytorch/raw/master/assets/image_1.jpg' />
 </p>
 
-# OpenPose PyTorch
-**OpenPose api wrapper in PyTorch.**
+# [Optimized] OpenPose PyTorch
+**OpenPose api wrapper in PyTorch, but faster :-)**
 <img align='right' height='100' src='https://github.com/prasunroy/openpose-pytorch/blob/master/assets/logo.png' />
 
 ![badge](https://github.com/prasunroy/openpose-pytorch/blob/master/assets/badge_1.svg)
@@ -14,11 +14,11 @@
 * Install [PyTorch](https://pytorch.org/get-started/locally/)
 #### Option 1: Install using pip
 ```
-pip install git+https://github.com/prasunroy/openpose-pytorch.git
+pip install git+https://github.com/Stry233/optimized-openpose-pytorch
 ```
 #### Option 2: Install from source
 ```
-git clone https://github.com/prasunroy/openpose-pytorch.git
+git clone https://github.com/Stry233/optimized-openpose-pytorch
 cd openpose-pytorch
 python setup.py install
 ```
